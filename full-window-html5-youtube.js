@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         Full-window HTML5 videos on YouTube
 // @namespace    https://github.com/alex-chew/userscripts
-// @version      0.2.1
+// @version      0.2.2
 // @description  Toggles full-window YouTube HTML5 player
-// @author       You
+// @author       Alex Chew
 // @match        https://www.youtube.com/watch*
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -44,12 +44,13 @@ GM_addStyle(style_hidescroll);
 GM_addStyle(style_hideheader);
 GM_addStyle(style_fullplayer);
 GM_addStyle(style_centervideo);
-GM_addStyle(style_centerprobar)
+//GM_addStyle(style_centerprobar); // Dragging the time cursor doesn't work
 
 // Keyboard shortcut for toggling full-window styles
 function doc_keyUp(e) {
 	if (e.keyCode == 87) { // w (for window)
 		document.getElementsByTagName('body')[0].classList.toggle('yt-fullwindow');
+		window.scrollTo(0, 0); // Can scroll while fullwindow; reset scroll on toggle
 	}
 }
 document.addEventListener('keyup', doc_keyUp, false);
