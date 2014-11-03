@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Full-window HTML5 videos on YouTube
 // @namespace    https://github.com/alex-chew/userscripts
-// @version      0.2
+// @version      0.2.1
 // @description  Toggles full-window YouTube HTML5 player
 // @author       You
 // @match        https://www.youtube.com/watch*
@@ -32,11 +32,19 @@ var style_centervideo =
 		'height: 100% !important' +
 	'}';
 
+// Center progressbar (TODO scale progressbar to full width)
+var style_centerprobar =
+	'.yt-fullwindow .html5-progress-bar {' +
+		'position: relative;' +
+		'margin: 0 auto;' +
+	'}';
+
 // Add styles to page
 GM_addStyle(style_hidescroll);
 GM_addStyle(style_hideheader);
 GM_addStyle(style_fullplayer);
 GM_addStyle(style_centervideo);
+GM_addStyle(style_centerprobar)
 
 // Keyboard shortcut for toggling full-window styles
 function doc_keyUp(e) {
